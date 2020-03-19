@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block css %}
+<style>
+    .detail{
+        max-width: 700px;
+        margin: 50px auto;
+        text-align: center;
+    }
+    .detail h1 a{
+        color: #4e8bff;
+    }
+    .detail h1 a:hover{
+        text-decoration: underline;
+    }
+    .detail img{
+        border-radius: 50%;
+        border: 8px solid #5b5b5b;
+    }
+    .detail__back {
+        margin-top: 20px;
+    }
+    .detail__back a{
+        margin-top: 20px;
+        padding: 10px 40px;
+        border-radius: 5px;
+        font-size: 20px;
+        color: #f4f4f4;
+        background-color: #5b5b5b;
+    }
+    .detail__back a:hover{
+        box-shadow: 2px 2px 12px 1px rgba(91, 91, 91, 0.2);
+    }
+    .detail__back a:active{
+        background-color: #4e8bff;
+    }
+</style>
+{% endblock %}
+
+{% block title %}Profile picture{% endblock %}
+
+{% block content %}
+    <div class="detail">
+        <h1>Profile picture for <a href="https://twitter.com/{{ handle }}">{{ handle }}</a></h1>
+        <img src="{{ picture }}">
+        <div class="detail__back">
+            <a href="{{ url_for('get_profile_picture_list') }}">Back</a>
+        </div>
+    </div>
+{% endblock %}

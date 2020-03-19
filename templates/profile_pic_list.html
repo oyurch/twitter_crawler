@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block css %}
+<style>
+    h1{
+        color: #363636;
+    }
+    .profile-list{
+        display: flex;
+    }
+    .profile-list li{
+        margin: 10px;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .profile-pic img{
+        max-width: 200px;
+        border-radius: 50%;
+        border: 8px solid #5b5b5b;
+    }
+</style>
+{% endblock %}
+
+{% block title %}Profile picture{% endblock %}
+
+{% block content %}
+<h1>Profile pictures</h1>
+<ul class="profile-list">
+    {% for picture in pictures -%}
+    <li class="profile-pic">
+        <a href="{{ url_for('get_profile_picture_detail', handle=picture.handle) }}"><img src="{{ url_for('static', filename=picture.pic_url) }}"></a></li>
+    {%- else %}
+        <h2>No pictures</h2>
+    {%- endfor %}
+</ul>
+{{ picture }}
+{% endblock %}

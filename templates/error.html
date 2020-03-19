@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block css %}
+    <style>
+        .error{
+            width: 600px;
+            padding: 20px;
+            margin: 100px auto;
+            border: 1px solid #343434;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 12px 12px 2px 1px rgba(255, 9, 0, 0.2);
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="error">
+        <h1>Error!</h1>
+        <h2>{{ message|default("Ooops! Seems like it is on our side!") }}</h2>
+    </div>
+{% endblock %}
