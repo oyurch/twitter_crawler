@@ -11,6 +11,7 @@ app = Flask(__name__)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 PICTURES_FOLDER_NAME = "static"
 PICTURES_FOLDER_PATH = os.path.join(BASE_DIR, PICTURES_FOLDER_NAME)
+EXCLUDE_FILES = [".gitkeep"]
 
 
 def save_profile_pic(handle):
@@ -21,7 +22,7 @@ def save_profile_pic(handle):
 
     soup = BeautifulSoup(html, "html.parser")
 
-    profile_pic_url = soup.find('img', {"class": "ProfileAvatar-image"}).get('src')
+    profile_pic_url = soup.find("img", {"class": "ProfileAvatar-image"}).get("src")
     if profile_pic_url:
         _, extension = os.path.splitext(profile_pic_url)
         filename = f"{handle}{extension}"
@@ -52,7 +53,7 @@ def process_handle():
             }, 400
         return {
             "error": False,
-            "url": url_for('get_profile_picture_detail', handle=handle),
+            "url": url_for("get_profile_picture_detail", handle=handle),
         }
 
     return {"error": True, "message": "Bad request"}, 400
@@ -83,9 +84,13 @@ def get_profile_picture_list():
     else:
         context["pictures"] = []
         for picture in pictures_dir:
+
+            if picture in EXCLUDE_FILES:
+                continue
+
             context["pictures"].append({
                 "pic_url": picture,
-                "handle": os.path.basename(picture).split('.')[0],
+                "handle": os.path.basename(picture).split(".")[0],
             })
     return render_template(template, **context)
 
