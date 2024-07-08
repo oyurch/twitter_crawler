@@ -63,7 +63,7 @@ jobs:
       #    run test suite and output coverage file
       #----------------------------------------------
       - name: Test with pytest
-        run: pytest --cov=. --cov-report=xml
+        run: pytest --cov=coverage.xml --cov-report=xml --repo tests/
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
