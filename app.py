@@ -21,18 +21,20 @@ def save_profile_pic(handle):
         return False
 
     soup = BeautifulSoup(html, "html.parser")
+    profile_pic_tag = soup.find("img", {"class": "ProfileAvatar-image"})
 
-    profile_pic_url = soup.find("img", {"class": "ProfileAvatar-image"}).get("src")
-    if profile_pic_url:
-        _, extension = os.path.splitext(profile_pic_url)
-        filename = f"{handle}{extension}"
-        filepath = os.path.join(PICTURES_FOLDER_PATH, filename)
+    if profile_pic_tag:
+        profile_pic_url = profile_pic_tag.get("src")
+        if profile_pic_url:
+            _, extension = os.path.splitext(profile_pic_url)
+            filename = f"{handle}{extension}"
+            filepath = os.path.join(PICTURES_FOLDER_PATH, filename)
 
-        try:
-            urlretrieve(profile_pic_url, filepath)
-        except (HTTPError, URLError):
-            return False
-        return True
+            try:
+                urlretrieve(profile_pic_url, filepath)
+            except (HTTPError, URLError):
+                return False
+            return True
     return False
 
 

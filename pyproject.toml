@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "twitter-crawler"
+version = "0.1.0"
+description = ""
+authors = ["oleksandr.y <oleksandr.yurchenko@orderbird.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+flask = "^3.0.3"
+gunicorn = "^22.0.0"
+beautifulsoup4 = "^4.12.3"
+pytest = "^8.2.2"
+requests-mock = "^1.12.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
