@@ -63,7 +63,7 @@ jobs:
       #    run test suite and output coverage file
       #----------------------------------------------
       - name: Test with pytest
-        run: pytest --cov=. --cov-report=xml .
+        run: pytest --cov=. --cov-report=xml tests/
       - name: Adjust coverage report paths
         run: sed -i 's|<source>.*</source>|<source>.</source>|g' coverage.xml
       - name: SonarCloud Scan
