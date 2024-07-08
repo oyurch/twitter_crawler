@@ -68,11 +68,6 @@ jobs:
       #----------------------------------------------
       - name: Test with pytest
         run: pytest --cov=. --cov-report=xml
-  sonarcloud:
-    needs: build
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
