@@ -17,7 +17,7 @@ EXCLUDE_FILES = [".gitkeep"]
 def save_profile_pic(handle):
     try:
         html = urlopen(f"https://twitter.com/{handle}")
-    except (HTTPError, URLError):
+    except URLError:
         return False
 
     soup = BeautifulSoup(html, "html.parser")
