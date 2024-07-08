@@ -67,7 +67,7 @@ jobs:
       #    run test suite and output coverage file
       #----------------------------------------------
       - name: Test with pytest
-        run: poetry run pytest --cov=. --cov-report=xml
+        run: pytest --cov=. --cov-report=xml
   sonarcloud:
     needs: build
     name: SonarCloud
